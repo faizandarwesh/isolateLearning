@@ -1,6 +1,13 @@
 # isolate_learning
 
-A new Flutter project in which i'm learning isolates concept
+This project demonstrates the practical use of isolates in Flutter. It provides a hands-on approach to learning isolates by implementing them in a real-world scenario. Isolates are used to perform time-consuming tasks in the background without blocking the main thread, improving app performance and responsiveness.
+
+Key Features:
+
+Understand the concept of isolates in Dart and Flutter.
+Practical examples of isolate usage for background processing.
+Simple implementation to help grasp key isolate principles.
+Feel free to explore the code and learn how isolates can enhance your Flutter apps!
 
 ## Getting Started
 
