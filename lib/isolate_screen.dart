@@ -1,13 +1,24 @@
 import 'dart:isolate';
-
 import 'package:flutter/material.dart';
+import 'package:isolate_learning/file_download.dart';
 
-class IsolateScreen extends StatelessWidget {
+class IsolateScreen extends StatefulWidget {
   const IsolateScreen({super.key});
 
   @override
+  State<IsolateScreen> createState() => _IsolateScreenState();
+}
+
+class _IsolateScreenState extends State<IsolateScreen> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.file_copy_outlined),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const FileDownload()));
+          }),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Learning Isolate"),
@@ -49,8 +60,8 @@ class IsolateScreen extends StatelessWidget {
             ElevatedButton(
                 onPressed: () async {
                   final receivePort = ReceivePort();
-                  await Isolate.spawn(complexTask4,
-                      (1000000000,receivePort.sendPort));
+                  await Isolate.spawn(
+                      complexTask4, (1000000000, receivePort.sendPort));
                   receivePort.listen((result) {
                     print("Total : $result");
                   });
